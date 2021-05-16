@@ -15,7 +15,7 @@ function convertFahrToCelsius(fah) {
         celsiusValue.style.backgroundColor = "#eb5c3891";
     }else if(!Number.isNaN(fah) && !Number.isNaN(Number(fah))){
         celsius = (fah - 32) * 5/9;
-        celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: ${celsius}`;
+        celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: ${celsius.toFixed(4)}`;
         celsiusValue.style.backgroundColor = "inherit";
         console.log(celsius);
      }else{
@@ -75,7 +75,6 @@ function checkYuGiOh(n){
         factorsValue.style.backgroundColor = "#e5383b";
         factorsValue.style.fontWeight = "600"
         factorsValue.style.fontSize = "1.1rem"
-        console.log(`<b>FACTORIZED OUTPUT</b>: ${n} is not a valid number but a/an ${typeof n}.`);
     return arr;
 }
 }
