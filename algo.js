@@ -45,7 +45,8 @@ function checkYuGiOh(n){
         factorsValue.innerHTML = `<b>FACTORIZED OUTPUT</b>: is empty`;
         factorsValue.style.backgroundColor = "#eb5c3891";
     }
-    else if (!Number.isNaN(n) && !Number.isNaN(Number(n)) && !n===0){
+    // else if(n===0)
+    else if (!Number.isNaN(n) && !Number.isNaN(Number(n))){
         for (let i = 1; i <= n; i++){
             if((i % 5) === 0 && (i%3) === 0 && (i%2)){
                 factors[i] = "yu-gi-oh"
