@@ -15,7 +15,8 @@ function convertFahrToCelsius(fah) {
         celsiusValue.style.backgroundColor = "#eb5c3891";
     }else if(!Number.isNaN(fah) && !Number.isNaN(Number(fah))){
         celsius = (fah - 32) * 5/9;
-        celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: ${celsius.toFixed(4)}`;
+        celsius.toFixed(4)
+        celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: ${celsius}`;
         celsiusValue.style.backgroundColor = "inherit";
         console.log(celsius);
      }else{
