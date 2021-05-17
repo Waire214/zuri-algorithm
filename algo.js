@@ -33,6 +33,20 @@ const factorsValue = document.getElementById("factors")
 var form2 = document.querySelector("#form2");
   form2.addEventListener("submit", function(event) {
     let n = form2.elements.inputvalue2.value;
+    let messages;
+    let errormessage = document.getElementById("factors-error");   
+        if(n===0 || n==="0" || Math.sign(n) === -1){
+            messages = `<b>INPUT VALUE</b>: should not be 0 and must be positive`;
+            errormessage.innerHTML= messages
+            errormessage.style.backgroundColor= "#e5383b"
+            errormessage.style.marginTop = "20px"
+            errormessage.style.padding = "10px"
+        }
+        else{
+            errormessage.innerHTML= ""
+            errormessage.style.marginTop = "0px"
+            errormessage.style.padding = "0px"
+        }    
     event.preventDefault();
     checkYuGiOh(n)
   });
@@ -45,16 +59,15 @@ function checkYuGiOh(n){
         factorsValue.innerHTML = `<b>FACTORIZED OUTPUT</b>: is empty`;
         factorsValue.style.backgroundColor = "#eb5c3891";
     }
-    // else if(n===0)
-    else if (!Number.isNaN(n) && !Number.isNaN(Number(n))){
+    else if (!n===0 || !Number.isNaN(n) && !Number.isNaN(Number(n))){
         for (let i = 1; i <= n; i++){
-            if((i % 5) === 0 && (i%3) === 0 && (i%2)){
+            if((i % 5) === 0 && (i%3) === 0 && (i%2)=== 0){
                 factors[i] = "yu-gi-oh"
-            }else if((i%5) === 0 && (i%3) === 0 && (i%2) !== 0){
+            }else if((i%5) === 0 && (i%3) === 0 && (i%2) !== 0 ){
                 factors[i] = "gi-oh"
-            }else if((i%5) === 0 && (i%2) === 0 && (i%3) !== 0){
+            }else if((i%5) === 0 && (i%2) === 0 && (i%3) !== 0 ){
                 factors[i] = "yu-oh"
-            }else if((i%3) === 0 && (i%2) === 0 && (i%5) !== 0){
+            }else if((i%3) === 0 && (i%2) === 0 && (i%5) !== 0 ){
                 factors[i] = "yu-gi"
             }else if ((i%5) === 0 && (i%2) !== 0 && (i%3) !== 0){
                 factors[i] = "oh"
@@ -67,7 +80,7 @@ function checkYuGiOh(n){
             }
             factors
         }
-        arr = factors.filter(factor => factor !== NaN);
+        arr = factors.filter(factor => factor);
         factorsValue.innerHTML = `<b>FACTORIZED OUTPUT</b>: ${arr}`;
         factorsValue.style.backgroundColor = "inherit";
         console.log(arr);
@@ -76,6 +89,8 @@ function checkYuGiOh(n){
         factorsValue.style.backgroundColor = "#e5383b";
         factorsValue.style.fontWeight = "600"
         factorsValue.style.fontSize = "1.1rem"
+    }
     return arr;
 }
-}
+// let z = Math.sign("20");
+// console.log(z);
