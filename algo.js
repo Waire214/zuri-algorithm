@@ -43,7 +43,7 @@ var form2 = document.querySelector("#form2");
             errormessage.style.padding = "10px"
         }
         else{
-            errormessage.innerHTML= ""
+            document.getElementById("factors-error").innerHTML= ""
             errormessage.style.marginTop = "0px"
             errormessage.style.padding = "0px"
         }    
