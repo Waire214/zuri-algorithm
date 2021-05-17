@@ -10,16 +10,17 @@ var form1 = document.querySelector("#form1");
 function convertFahrToCelsius(fah) {      
     let celsius;
     if(fah === ""){
-        fah = "empty"
-        celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: is ${fah}.`;
+        celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: is empty.`;
         celsiusValue.style.backgroundColor = "#eb5c3891";
+        console.log(JSON.parse(`{"${fah}":  "is not a valid number but a/an ${typeof fah}"}`));
     }else if(!Number.isNaN(fah) && !Number.isNaN(Number(fah))){
         celsius = (fah - 32) * 5/9;
         celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: ${celsius.toFixed(4)}`;
         celsiusValue.style.backgroundColor = "inherit";
         console.log(celsius);
      }else{
-        celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: ${fah} is not a valid number but a/an ${typeof fah}.`;
+        celsiusValue.innerHTML = `<b>CELSIUS VALUE</b>: "${fah}" is not a valid number but a/an "${typeof fah}".`;
+        console.log(JSON.parse(`{"${fah}":  "is not a valid number but a/an ${typeof fah}"}`));
         celsiusValue.style.backgroundColor = "#e5383b";
         celsiusValue.style.fontWeight = "600"
         celsiusValue.style.fontSize = "1.1rem"
@@ -55,9 +56,9 @@ function checkYuGiOh(n){
     let arr = [];
     const factors = [];
     if(n === ""){
-        n = "empty"
         factorsValue.innerHTML = `<b>FACTORIZED OUTPUT</b>: is empty`;
         factorsValue.style.backgroundColor = "#eb5c3891";
+        console.log(JSON.parse(`{"invalid parameter": "${n}"}`));
     }
     else if (!n===0 || !Number.isNaN(n) && !Number.isNaN(Number(n))){
         for (let i = 1; i <= n; i++){
@@ -81,11 +82,12 @@ function checkYuGiOh(n){
             factors
         }
         arr = factors.filter(factor => factor);
-        factorsValue.innerHTML = `<b>FACTORIZED OUTPUT</b>: ${arr}`;
+        factorsValue.innerHTML = `<b>FACTORIZED OUTPUT</b>: "${arr}"`;
         factorsValue.style.backgroundColor = "inherit";
         console.log(arr);
     }else{
-        factorsValue.innerHTML = `<b>FACTORIZED OUTPUT</b>: invalid parameter: ${n}`
+        factorsValue.innerHTML = `<b>FACTORIZED OUTPUT</b>: invalid parameter: "${n}"`
+        console.log(JSON.parse(`{"invalid parameter": "${n}"}`));
         factorsValue.style.backgroundColor = "#e5383b";
         factorsValue.style.fontWeight = "600"
         factorsValue.style.fontSize = "1.1rem"
