@@ -1,30 +1,44 @@
 function convertFahrToCelsius(fah) {      
     let celsius;
+    let str;
     if(fah === ""){
-        console.log(JSON.parse(`{"${fah}":  "is not a valid number but a/an ${typeof fah}"}`));
-    }else if(!Number.isNaN(fah) && !Number.isNaN(Number(fah))){
-        celsius = (fah - 32) * 5/9;
-        console.log(celsius);
-     }else{
-        console.log(JSON.parse(`{"${fah}":  "is not a valid number but a/an ${typeof fah}"}`));
+        str = JSON.stringify(fah);
+        return `${str} is not a valid number but a/an ${typeof fah}`
     }
-    return celsius;
+    if(Number.isNaN(Number(fah))){
+        if(Array.isArray(fah)){
+            str = JSON.stringify(fah);
+            return `${str} is not a valid number but a/an ${typeof fah}`
+
+        }else if(Object.prototype.toString.call(fah) !== '[object Array]'){
+            str = JSON.stringify(fah);
+            return `${str} is not a valid number but a/an ${typeof fah}`
+        }else{
+            str = JSON.stringify(fah);
+            return `${str} is not a valid number but a/an ${typeof fah}`
+        }
+    }else(!Number.isNaN(fah) && !Number.isNaN(Number(fah)));{
+        celsius = (fah - 32) * 5/9;
+        return celsius.toFixed(4)
+     }
 }
-convertFahrToCelsius()
-convertFahrToCelsius("")
-convertFahrToCelsius(0)
-convertFahrToCelsius('0')
-convertFahrToCelsius(10);
-convertFahrToCelsius([1,2,3]);
-convertFahrToCelsius({temp: 0});
+console.log(convertFahrToCelsius());
+console.log(convertFahrToCelsius(""));
+console.log(convertFahrToCelsius("a"));
+console.log(convertFahrToCelsius(0));
+console.log(convertFahrToCelsius('0'));
+console.log(convertFahrToCelsius(10));
+console.log(convertFahrToCelsius([1,2,3]));
+console.log(convertFahrToCelsius({temp: 0}));
 
 function checkYuGiOh(n){
     let arr = [];
     const factors = [];
     if(n === ""){
-        console.log(JSON.parse(`{"invalid parameter": "${n}"}`));
+        str = JSON.stringify(n);
+        return `invalid parameter: ${str}`
     }
-    else if (!n===0 || !Number.isNaN(n) && !Number.isNaN(Number(n))){
+    else if (!Number.isNaN(n) && !Number.isNaN(Number(n))){
         for (let i = 1; i <= n; i++){
             if((i % 5) === 0 && (i%3) === 0 && (i%2)=== 0){
                 factors[i] = "yu-gi-oh"
@@ -46,13 +60,13 @@ function checkYuGiOh(n){
             factors
         }
         arr = factors.filter(factor => factor);
-        console.log(arr);
+        return arr;
     }else{
-        console.log(JSON.parse(`{"invalid parameter": "${n}"}`));
+        str = JSON.stringify(n);
+        return `invalid parameter: ${n}`
     }
-    return arr;
 }
-checkYuGiOh('');
-checkYuGiOh(10);
-checkYuGiOh("5");
-checkYuGiOh("fizzbuzz is meh");
+console.log(checkYuGiOh(''));
+console.log(checkYuGiOh(10));
+console.log(checkYuGiOh("5"));
+console.log(checkYuGiOh("fizzbuzz is meh"));
